@@ -58,7 +58,7 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
   //     return res.send(`event sudah di proses sebelumnya`);
   //   }
 
-  console.log(`query : ${req.query}`);
+  console.log("query ", req.query);
   console.log(data);
 
   //   doProcessEvent(userId, rewards);
