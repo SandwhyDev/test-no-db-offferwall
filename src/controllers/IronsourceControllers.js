@@ -32,7 +32,7 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
   const rewards = req.query.rewards;
   const signature = req.query.signature;
   const timestamp = req.query.timestamp;
-  const token = md5(timestamp + eventId + userId + rewards + PRIVATE_KEY);
+  // const token = md5(timestamp + eventId + userId + rewards + PRIVATE_KEY);
   // console.log({
   //   eventId: eventId,
   //   userId: userId,
