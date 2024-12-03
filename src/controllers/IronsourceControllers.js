@@ -26,7 +26,7 @@ IronsourceControllers.post(`/ironsource-create`, async (req, res) => {
   }
 });
 
-IronsourceControllers.get("/reward/video", async (req, res) => {
+IronsourceControllers.get("/reward-video", async (req, res) => {
   const userId = req.query.appUserId;
   const eventId = req.query.eventId;
   const rewards = req.query.rewards;
