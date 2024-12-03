@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model client_app {
+  id                        Int     @id @default(autoincrement())
+  client_id                 String  @unique
+  client_name               String
+  client_secret             String
+  logo_uri                  String
+  redirect_uris             String
+  registration_access_token String?
+  response_types            String
+  application_type          String
+  grant_types               String
+  post_logout_redirect_uris String
+  created_at                Int
+  updated_at                Int
+}
+
+model countries {
+  id            Int     @id
+  name          String? @db.VarChar(65)
+  capital       String? @db.VarChar(65)
+  iso1366_a2    String? @db.VarChar(2)
+  iso3166_a3    String? @db.VarChar(3)
+  iso3166_num   Int?
+  fips          String? @db.VarChar(4)
+  continent     String? @db.VarChar(2)
+  currency_code String? @db.VarChar(4)
+  lang          String? @db.VarChar(4)
+  area_code     Int?
+  postal_format String? @db.VarChar(55)
+  flag          String? @db.VarChar(75)
+}
+
+model country {
+  id           Int    @id @default(autoincrement()) @db.UnsignedTinyInt
+  country_code String @db.VarChar(4)
+  country_name String @db.VarChar(100)
+  area_code    String @db.VarChar(4)
+}
+
+model user_data {
+  id             Int     @id @default(autoincrement())
+  fullname       String? @db.VarChar(100)
+  email          String? @unique @db.VarChar(100)
+  phone_number   String? @unique @db.VarChar(20)
+  password       String? @db.VarChar(255)
+  auth_token     String? @db.VarChar(32)
+  language_code  String? @default("EN") @db.VarChar(3)
+  phone_verified String  @default("0") @db.VarChar(1)
+  email_verified String  @default("0") @db.VarChar(1)
+  verify_code    String? @db.VarChar(6)
+  verify_submit  Int?
+  country_id     Int     @default(0) @db.TinyInt
+  user_photo     String? @db.VarChar(255)
+  reg_platform   Boolean @default(true)
+  gender         String  @default("0") @db.VarChar(1)
+  birth_date     Int?
+  point          Int     @default(0)
+}
