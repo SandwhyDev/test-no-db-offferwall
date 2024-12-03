@@ -33,13 +33,13 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
   const signature = req.query.signature;
   const timestamp = req.query.timestamp;
   // const token = md5(timestamp + eventId + userId + rewards + PRIVATE_KEY);
-  // console.log({
-  //   eventId: eventId,
-  //   userId: userId,
-  //   rewards: rewards,
-  //   signature: signature,
-  //   timestamp: timestamp,
-  // });
+  const data = {
+    event_id: eventId,
+    rewards: rewards,
+    signature: signature,
+    user_id: userId,
+    timestamp: timestamp,
+  };
 
   // validate the call using the signature
   // if (token !== signature) {
@@ -50,14 +50,6 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
   //   // return;
   // }
 
-  const data = {
-    event_id: eventId,
-    rewards: rewards,
-    signature: signature,
-    user_id: userId,
-    timestamp: timestamp,
-  };
-
   //   const cekEvent = await alreadyProcessed(data);
 
   //   // check that we haven't processed the same event before
@@ -65,6 +57,9 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
   //     // grant the rewards
   //     return res.send(`event sudah di proses sebelumnya`);
   //   }
+
+  console.log(`query : ${req.query}`);
+  console.log(data);
 
   //   doProcessEvent(userId, rewards);
 
