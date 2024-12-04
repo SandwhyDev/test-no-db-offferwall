@@ -2,6 +2,11 @@ import express from "express";
 import UserModels from "../models/UserModels";
 import { alreadyProcessed, doProcessEvent } from "../libs/HandleReward";
 import md5 from "md5";
+import env from "dotenv";
+
+env.config();
+
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const IronsourceControllers = express.Router();
 
@@ -42,6 +47,8 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
     user_id: userId,
     timestamp: timestamp,
   };
+
+  console.log(req.query);
 
   // validate the call using the signature
   if (token !== signature) {
