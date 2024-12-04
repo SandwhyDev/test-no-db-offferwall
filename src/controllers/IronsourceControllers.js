@@ -48,7 +48,8 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
     timestamp: timestamp,
   };
 
-  console.log(req.query);
+  console.log("token ", token);
+  console.log("signature ", signature);
 
   // validate the call using the signature
   if (token !== signature) {
