@@ -1,12 +1,12 @@
 import express from "express";
 import UserModels from "../models/UserModels";
 
-const IronsourceControllers = express.Router();
+const UserControllers = express.Router();
 
 const model = UserModels;
 
 // create
-IronsourceControllers.post(`/ironsource-create`, async (req, res) => {
+UserControllers.post(`/user-create`, async (req, res) => {
   try {
     const data = await req.body;
 
@@ -26,50 +26,8 @@ IronsourceControllers.post(`/ironsource-create`, async (req, res) => {
   }
 });
 
-IronsourceControllers.get("/reward-video", async (req, res) => {
-  const userId = req.query.appUserId;
-  const eventId = req.query.eventId;
-  const rewards = req.query.rewards;
-  const signature = req.query.signature;
-  const timestamp = req.query.timestamp;
-  const token = md5(timestamp + eventId + userId + rewards + PRIVATE_KEY);
-  const data = {
-    event_id: eventId,
-    rewards: rewards,
-    signature: signature,
-    user_id: userId,
-    timestamp: timestamp,
-  };
-
-  // validate the call using the signature
-  if (token !== signature) {
-    console.log("Signature doesn’t match parameters");
-
-    res
-      .status(200)
-      .type("application/xml")
-      .send("Signature doesn’t match parameters");
-
-    return;
-  }
-
-  //   const cekEvent = await alreadyProcessed(data);
-
-  // check that we haven't processed the same event before
-  if (!cekEvent) {
-    console.log(`event sudah di proses sebelumnya`);
-
-    // grant the rewards
-    return res.send(`event sudah di proses sebelumnya`);
-  }
-
-  doProcessEvent(userId, rewards);
-
-  res.send(`${eventId}:OK:${JSON.stringify(data)}`);
-});
-
 // read
-IronsourceControllers.get(`/ironsource-read/:uid?`, async (req, res) => {
+UserControllers.get(`/user-read/:uid?`, async (req, res) => {
   try {
     const { uid } = await req.params;
     var result;
@@ -109,7 +67,7 @@ IronsourceControllers.get(`/ironsource-read/:uid?`, async (req, res) => {
 });
 
 // update
-IronsourceControllers.put(`/ironsource-update/:uid`, async (req, res) => {
+UserControllers.put(`/user-update/:uid`, async (req, res) => {
   try {
     const { uid } = await req.params;
     const data = await req.body;
@@ -134,7 +92,7 @@ IronsourceControllers.put(`/ironsource-update/:uid`, async (req, res) => {
 });
 
 // delete
-IronsourceControllers.delete(`/ironsource-delete/:uid`, async (req, res) => {
+UserControllers.delete(`/user-delete/:uid`, async (req, res) => {
   try {
     const { uid } = await req.params;
 
@@ -156,4 +114,4 @@ IronsourceControllers.delete(`/ironsource-delete/:uid`, async (req, res) => {
   }
 });
 
-export default IronsourceControllers;
+export default UserControllers;
