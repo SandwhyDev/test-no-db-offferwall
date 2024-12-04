@@ -35,7 +35,7 @@ UserControllers.get(`/user-read/:uid?`, async (req, res) => {
     if (uid) {
       const find = await model.findUnique({
         where: {
-          unique_id: uid,
+          unique_id: +uid,
         },
       });
 
@@ -74,7 +74,7 @@ UserControllers.put(`/user-update/:uid`, async (req, res) => {
 
     const update = await model.update({
       where: {
-        unique_id: uid,
+        id: +uid,
       },
       data: data,
     });

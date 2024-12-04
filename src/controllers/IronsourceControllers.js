@@ -1,5 +1,6 @@
 import express from "express";
 import UserModels from "../models/UserModels";
+import { alreadyProcessed, doProcessEvent } from "../libs/HandleReward";
 
 const IronsourceControllers = express.Router();
 
@@ -53,15 +54,15 @@ IronsourceControllers.get("/reward-video", async (req, res) => {
     return;
   }
 
-  //   const cekEvent = await alreadyProcessed(data);
+  // const cekEvent = await alreadyProcessed(data);
 
-  // check that we haven't processed the same event before
-  if (!cekEvent) {
-    console.log(`event sudah di proses sebelumnya`);
+  // // check that we haven't processed the same event before
+  // if (!cekEvent) {
+  //   console.log(`event sudah di proses sebelumnya`);
 
-    // grant the rewards
-    return res.send(`event sudah di proses sebelumnya`);
-  }
+  //   // grant the rewards
+  //   return res.send(`event sudah di proses sebelumnya`);
+  // }
 
   doProcessEvent(userId, rewards);
 
