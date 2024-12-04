@@ -21,6 +21,7 @@
     "dotenv": "^16.4.6",
     "dotenv-cli": "^7.4.4",
     "express": "^4.21.1",
+    "md5": "^2.3.0",
     "prisma": "^5.0.0"
   },
   "devDependencies": {

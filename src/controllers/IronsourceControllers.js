@@ -1,6 +1,7 @@
 import express from "express";
 import UserModels from "../models/UserModels";
 import { alreadyProcessed, doProcessEvent } from "../libs/HandleReward";
+import md5 from "md5";
 
 const IronsourceControllers = express.Router();
 
