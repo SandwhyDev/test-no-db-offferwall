@@ -8,14 +8,9 @@ env.config();
 
 const app = express();
 const PORT = process.env.PORT;
-const corsOptions = {
-  origin: "http://localhost:8007", // ganti dengan URL frontend Anda
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
 
 //MIDDLEWARE
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../public")));
