@@ -5,34 +5,8 @@
   </head>
 
   <body>
-    <script>
-      (() => {
-        var t, a, p, j, o, y;
-        (t = window),
-          (a = document),
-          (p = "https://webofferwall.tapjoy.com/sdk/latest"),
-          "function" == typeof t[(j = "Tapjoy")]
-            ? t[j]("activator-reinitialized")
-            : ((t[j] = function () {
-                (t[j].q = t[j].q || []).push(arguments);
-              }),
-              (t[j].l = 1 * new Date()),
-              (o = a.createElement("script")),
-              (y = a.getElementsByTagName("script")[0]),
-              (o.async = 1),
-              (o.src = p),
-              y.parentNode.insertBefore(o, y));
-      })();
-    </script>
-    <script>
-      Tapjoy("init", {
-        sdkKey: "wB0HwNKnQFS9p9-KBGSS2AECmK2pL2zOwjBVvzLtxqgBof1jxfiZnJrNHMaI",
-        publisherUserId: "c01d07c0-d2a7-4054-bda7-df8a046492d8",
-        eventName: "<PLACEMENT_NAME>",
-        logger: console,
-      });
-    </script>
-
     <button onclick="javascript:Tapjoy('showOfferwall', {});">Click Me</button>
+
+    <script src="./index.js"></script>
   </body>
 </html>
